@@ -1,0 +1,68 @@
+<div class="kf kf-container" *ngIf="state$ | async as state">
+  <form
+    [formGroup]="state.form"
+    [frFormCache]="state.form"
+    cacheKey="KnieFell"
+    (cacheValueLoaded)="setCachedValue($event)"
+    #formCache="frFormCache"
+    (ngSubmit)="submit(state)"
+  >
+    <div class="kf-form-container kf-form">
+      <label class="kf-label kf-name__label">Name</label>
+      <input
+        class="kf-input kf-name__input"
+        type="text"
+        formControlName="name"
+      />
+
+      <label class="kf-label kf-anzahl__label">Anzahl Spiele</label>
+      <div class="kf-input kf-anzahl__input">
+        <div class="kf-anzahl-container">
+          <button
+            type="button"
+            class="kf-button kf-anzahl__button-dec"
+            [disabled]="state.disableRemoveSpiel"
+            (click)="removeSpiel()"
+          >
+            &minus;
+          </button>
+          <button
+            type="button"
+            class="kf-button kf-anzahl__button-inc"
+            [disabled]="state.disableAddSpiel"
+            (click)="addSpiel()"
+          >
+            &plus;
+          </button>
+        </div>
+      </div>
+
+      <ng-container
+        *ngFor="
+          let spiel of state.spiele;
+          let showLabels = first;
+          trackBy: trackSpiel
+        "
+      >
+        <kf-spiel
+          [class]="'kf-spiel__' + spiel.spielNummer"
+          [state]="spiel"
+          [showLabels]="showLabels"
+        ></kf-spiel>
+      </ng-container>
+
+      <label class="kf-label kf-gesamt__label"> Gesamtsumme </label>
+      <span class="kf-input kf-input--read-only kf-gesamt__input">
+        {{ state.gesamtSpiele }}
+      </span>
+      <div class="kf-form-submit-container kf-form-button-container">
+        <button type="submit" disabled class="kf-button">speichern</button>
+      </div>
+      <div class="kf-form-reset-container kf-form-button-container">
+        <button type="button" class="kf-button" (click)="reset(formCache)">
+          löschen
+        </button>
+      </div>
+    </div>
+  </form>
+</div>

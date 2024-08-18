@@ -1,0 +1,102 @@
+.kf-container {
+  width: 100%;
+}
+
+.kf-form-container {
+  --label-width: var(--mobile-label-width);
+  --input-width: var(--mobile-input-width);
+}
+
+@media (min-width: 68ch) and (pointer: fine),
+  (min-width: 68ch) and (pointer: none) {
+  .kf-form-container {
+    --label-width: var(--desktop-label-width);
+    --input-width: var(--desktop-input-width);
+  }
+}
+
+.kf-form {
+  display: grid;
+  justify-content: center;
+  grid-template-columns: var(--label-width) repeat(6, var(--input-width));
+  grid-template-rows:
+    var(--line-height)
+    auto
+    var(--line-height)
+    calc(var(--padding) * 2)
+    var(--form-button-height);
+  grid-template-areas:
+    'label-name   input-name   input-name   input-name   label-anzahl label-anzahl input-anzahl'
+    'spiel-1      spiel-1      spiel-2      spiel-3      spiel-4      spiel-5      spiel-6     '
+    'label-gesamt input-gesamt .            .            .            .            .           '
+    '.            .            .            .            .            .            .           '
+    'submit       .            .            .            .            reset        reset       ';
+}
+
+.kf-name__label {
+  grid-area: label-name;
+}
+.kf-name__input {
+  grid-area: input-name;
+}
+.kf-anzahl__label {
+  grid-area: label-anzahl;
+}
+.kf-anzahl__input {
+  grid-area: input-anzahl;
+}
+.kf-spiel__1 {
+  grid-area: spiel-1;
+}
+.kf-spiel__2 {
+  grid-area: spiel-2;
+}
+.kf-spiel__3 {
+  grid-area: spiel-3;
+}
+.kf-spiel__4 {
+  grid-area: spiel-4;
+}
+.kf-spiel__5 {
+  grid-area: spiel-5;
+}
+.kf-spiel__6 {
+  grid-area: spiel-6;
+}
+.kf-gesamt__label {
+  grid-area: label-gesamt;
+}
+.kf-gesamt__input {
+  grid-area: input-gesamt;
+}
+
+.kf-anzahl-container {
+  display: grid;
+  column-gap: var(--padding);
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 100%;
+  grid-template-areas: 'dec inc';
+  height: 100%;
+}
+
+.kf-anzahl__button-dec {
+  grid-area: dec;
+}
+
+.kf-anzahl__button-inc {
+  grid-area: inc;
+}
+
+.kf-form-submit-container {
+  grid-area: submit;
+  align-self: stretch;
+}
+
+.kf-form-reset-container {
+  grid-area: reset;
+  align-self: stretch;
+}
+
+.kf-form-button-container .kf-button {
+  width: 100%;
+}

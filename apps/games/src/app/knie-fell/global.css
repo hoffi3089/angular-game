@@ -1,0 +1,78 @@
+.kf {
+  --color: cornflowerblue;
+  --invers-color: white;
+  --invalid-color: red;
+  --disabled-color: lightgray;
+  --line-height: 1.5em;
+  --padding: 0.3ch;
+  --desktop-input-width: 7ch;
+  --desktop-label-width: 14ch;
+  --mobile-input-width: 1fr;
+  --mobile-label-width: 2fr;
+  --form-button-height: 2em;
+  --font-size: 16pt;
+  --font-weight: bold;
+  --font-stretch: condensed;
+  --input-font-stretch: expanded;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: var(--font-size);
+  font-weight: var(--font-weight);
+  font-stretch: var(--font-stretch);
+}
+
+.kf input::-webkit-outer-spin-button,
+.kf input::-webkit-inner-spin-button {
+  display: none;
+}
+
+.kf-label {
+  color: var(--color);
+  outline: 1px solid var(--color);
+  padding: var(--padding);
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: clip;
+}
+
+.kf-input {
+  width: calc(100% - 2 * var(--padding));
+  margin: 0;
+  padding: 0;
+  border: 0;
+  padding: var(--padding);
+  text-align: end;
+  outline: 1px solid var(--color);
+  background-color: transparent;
+  font-size: var(--font-size);
+  font-weight: var(--font-weight);
+  font-stretch: var(--input-font-stretch);
+}
+
+input[type='text'].kf-input {
+  text-align: start;
+}
+
+.kf-input.kf-input--read-only {
+  color: var(--color);
+}
+
+.kf-input.ng-invalid {
+  color: var(--invalid-color);
+  outline: 1px solid var(--invalid-color);
+}
+
+.kf-button {
+  display: inline-block;
+  height: 100%;
+  border: none;
+  color: var(--invers-color);
+  background-color: var(--color);
+  outline: 1px solid var(--color);
+  padding-left: 1ch;
+  padding-right: 1ch;
+  text-align: center;
+}
+
+.kf-button:disabled {
+  background-color: var(--disabled-color);
+}
